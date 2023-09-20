@@ -6,11 +6,12 @@ const ejercicio03 = `SELECT * FROM movies WHERE year>=1930 AND year<=1940;`;
 
 const ejercicio04 = `SELECT * FROM movies WHERE title LIKE '%til%'`;
 
-const ejercicio05 = `SELECT * FROM movies WHERE`;
+const ejercicio05 = `SELECT * FROM movies WHERE ARRAY_LENGTH(actors, 1)=1`;
+// const ejercicio05 = `SELECT * FROM movies WHERE cardinality(actors) = 1;`;
 
-const ejercicio06 = `SELECT * FROM movies WHERE`;
+const ejercicio06 = `SELECT title, AVG(rating) FROM movies, unnest(ratings) as rating GROUP BY title ORDER BY avg DESC;`;
 
-const ejercicio07 = `SELECT * FROM movies WHERE title LIKE '%Fast and%' and year=2016;`;
+const ejercicio07 = `SELECT * FROM movies WHERE title LIKE '%Fast and%' AND year=2016;`;
 
 module.exports = {
    ejercicio02,
