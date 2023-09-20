@@ -13,7 +13,11 @@ module.exports = sequelize => {
         mana_cost: {
             type: DataTypes.FLOAT,
             allowNull: false,
-            unique: 'compositeIndex'
+            unique: 'compositeIndex',
+            validate: {
+                min: 10.0,
+                max: 250.0
+            }
         },
     });
 };

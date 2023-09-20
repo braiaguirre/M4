@@ -3,18 +3,24 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
    sequelize.define('Character', {
       code: {
-         type: DataTypes.INTEGER,
+         type: DataTypes.STRING,
          primaryKey: true,
          validate: {
-            len: [5]
+            len: [5],
+            not: /^[henry]/i
          }
       },
       name: {
          type: DataTypes.STRING,
-         unique: true
+         unique: true,
+         allowNull: false,
+         validate: {
+            notContains: 'Henry'
+         }
       },
       age: {
-         type: DataTypes.INTEGER
+         type: DataTypes.INTEGER,
+         allowNull: false
       },
       race: {
          type: DataTypes.ENUM('Human', 'Elf', 'Machine', 'Demon', 'Animal', 'Other'),
@@ -28,7 +34,7 @@ module.exports = (sequelize) => {
          type: DataTypes.FLOAT,
          allowNull: false
       }}, {
-         timestamps: false
+         timestamps: false,
       }
    );
 };
