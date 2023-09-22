@@ -16,6 +16,6 @@ modelRole(db);
 
 module.exports = {
    ...db.models,
-   db,
+   // db,
    Op,
 };
